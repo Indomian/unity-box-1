@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Unity - Activate
+      uses: webbertakken/unity-activate@v1.2
+      with:
+        # Version of unity to use for building the project.
+        unityVersion: 2019.3.15f1 # optional, default is 2019.2.11f1
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Unity - Builder
+      uses: webbertakken/unity-builder@v1.0
+      with:
+        # Version of unity to use for building the project.
+        unityVersion: 2019.3.15f1 # optional, default is 
+        # Platform that the build should target.
+        targetPlatform: WebGL # optional, default is 
+        # Relative path to the project to be built.
+        projectPath: ./ # optional, default is 
+        # Name of the build.
+        buildName: web # optional, default is 
+        # Path where the builds should be stored.
+        buildsPath: public/ # optional, default is 
+        # Path to a Namespace.Class.StaticMethod to run to perform the build.
+        # buildMethod: # optional, default is 
