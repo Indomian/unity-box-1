@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        Debug.Log("Test");
         body = GetComponent<Rigidbody>();
         body.isKinematic = false;
     }

@@ -5,12 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
+    public Activable control;
+
     void OnTriggerEnter (Collider col)
     {
-        Debug.Log("Collision: " + col.name);
+        Debug.Log("Button down for: " + col.name);
         if(col.name == "Cube")
         {
-            SceneManager.LoadScene("Level 2");
+            control.activate();
+            // SceneManager.LoadScene("Level 2");
+        }
+    }
+
+    void OnTriggerExit (Collider col)
+    {
+        Debug.Log("Button up for: " + col.name);
+        if(col.name == "Cube")
+        {
+            control.deactivate();
+            // SceneManager.LoadScene("Level 2");
         }
     }
 }
