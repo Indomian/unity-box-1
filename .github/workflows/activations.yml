@@ -1,5 +1,5 @@
 name: Acquire activation file
-on: [push]
+on: [manual]
 jobs:
   activation:
     name: Request manual activation file 🔑
@@ -10,7 +10,7 @@ jobs:
       id: getManualLicenseFile
       uses: webbertakken/unity-request-manual-activation-file@v1.1
       with:
-        unityVersion: ${{ secrets.SuperSecret }}
+        unityVersion: ${{ secrets.UNITY_VERSION }}
       # Expose artifacts
     - name: Expose as artifact
       uses: actions/upload-artifact@v1
