@@ -16,11 +16,6 @@ public class PlayerController : MonoBehaviour
         body.isKinematic = false;
     }
 
-    protected virtual void OnDisable()
-    {
-        body.isKinematic = false;
-    }
-
     // Update is called once per frame
     protected void Update()
     {
