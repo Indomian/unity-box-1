@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float maxSpeed = 1;
+    public float forwardForce = 1;
     public float torque = 0.1f;
+
     protected Rigidbody body;
 
     protected virtual void OnEnable()
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour
         float turn = Input.GetAxis("Horizontal");
         float speed = Input.GetAxis("Vertical");
 
-        body.AddForce(body.transform.forward * speed, ForceMode.VelocityChange);
-        body.AddRelativeTorque(Vector3.up * torque * turn);
+        body.AddForce(body.transform.forward * speed * forwardForce, ForceMode.Force);
+        body.AddRelativeTorque(body.transform.up * torque * turn);
     }
 }
