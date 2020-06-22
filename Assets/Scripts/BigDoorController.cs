@@ -5,7 +5,10 @@ using UnityEngine;
 public class BigDoorController : Activable
 {
     public GameObject door;
+    public bool initialOpen;
     private Animator doorAnimator;
+
+    
     public bool opened {
         get => _active;
         set {
@@ -33,8 +36,8 @@ public class BigDoorController : Activable
 
     // Start is called before the first frame update
     void Start()
-    {
-        opened = false;   
+    { 
         doorAnimator = door.GetComponent<Animator>();
+        opened = initialOpen;  
     }
 }
