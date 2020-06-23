@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432646411728088542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: 0}
+  m_LocalPosition: {x: 0, y: 0.49, z: 0}
   m_LocalScale: {x: 0.8, y: 1, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1661936518776677710}
@@ -139,7 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2384bf8b8bffdd247a0afbe2ad94c9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  control: {fileID: 0}
+  controls: []
+  tags: []
 --- !u!1 &4440428760077248637
 GameObject:
   m_ObjectHideFlags: 0
@@ -2734,7 +2735,7 @@ MeshCollider:
   m_GameObject: {fileID: 4440428760077248637}
   m_Material: {fileID: 13400000, guid: 590b7601e3e6063428cb3c8b71388da5, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: -1
