@@ -51,6 +51,7 @@ public class PlayerController3 : MonoBehaviour
         // then you can also multiply the push velocity by that.
 
         // Apply the push
-        body.velocity = pushDir * pushPower;
+        //body.velocity = pushDir * pushPower;
+        body.AddForce(pushDir * pushPower, ForceMode.Force);
     }
 }
