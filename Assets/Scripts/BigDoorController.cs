@@ -8,18 +8,6 @@ public class BigDoorController : Activable
     public bool initialOpen;
     private Animator doorAnimator;
 
-    
-    public bool opened {
-        get => _active;
-        set {
-            if (value) {
-                activate();
-            } else {
-                deactivate();
-            }
-        }
-    }
-
     public override void activate() {
         if (doorAnimator) {
             doorAnimator.SetBool("isOpened", true);
@@ -35,9 +23,10 @@ public class BigDoorController : Activable
     }
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     { 
         doorAnimator = door.GetComponent<Animator>();
-        opened = initialOpen;  
+        _active = initialOpen;
+        base.Start(); 
     }
 }

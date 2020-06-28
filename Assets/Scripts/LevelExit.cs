@@ -11,17 +11,6 @@ public class LevelExit : Activable
     private Animator doorAnimator;
     public string nextLevel;
 
-    public bool opened {
-        get => _active;
-        set {
-            if (value) {
-                activate();
-            } else {
-                deactivate();
-            }
-        }
-    }
-
     public override void activate() {
         redLight.enabled = false;
         greenLight.enabled = true;
@@ -41,23 +30,17 @@ public class LevelExit : Activable
     }
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        opened = false;   
         doorAnimator = door.GetComponent<Animator>();
         Debug.Log(doorAnimator);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.Start();
     }
 
     void OnTriggerEnter (Collider col)
     {
         Debug.Log("Someone entered exit: " + col.tag);
-        if(opened && col.tag == "Player")
+        if(_active && col.tag == "Player")
         {
             StartCoroutine(WaitAndLoadNext());
         }

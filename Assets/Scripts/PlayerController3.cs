@@ -7,6 +7,8 @@ public class PlayerController3 : MonoBehaviour
     public float speed = 3.0F;
     public float rotateSpeed = 3.0F;
 
+    public float pushPower = 2.0f;
+
     CharacterController controller;
 
     void Start()
@@ -26,7 +28,7 @@ public class PlayerController3 : MonoBehaviour
     }
 
     // this script pushes all rigidbodies that the character touches
-    float pushPower = 2.0f;
+
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Rigidbody body = hit.collider.attachedRigidbody;

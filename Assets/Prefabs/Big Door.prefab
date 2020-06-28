@@ -593,7 +593,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1876065257391805259}
-  - component: {fileID: 861519895635617027}
+  - component: {fileID: 8181409364564625753}
+  - component: {fileID: 1815649993479318532}
   m_Layer: 0
   m_Name: Big Door
   m_TagString: Untagged
@@ -618,7 +619,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &861519895635617027
+--- !u!95 &8181409364564625753
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876065257391805236}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 45a5e1391d6520e40b9a554ef79040ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1815649993479318532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -627,11 +647,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1876065257391805236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8f5228ce09239e44a699aa67962da8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 83237789565c3c8429157e4dc74c0ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 3913752817952019597}
-  initialOpen: 0
+  initialActive: 0
 --- !u!1 &3405533979360376230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1046,6 @@ GameObject:
   - component: {fileID: 2794321695309864752}
   - component: {fileID: 5832919123149063462}
   - component: {fileID: 5755286826839052596}
-  - component: {fileID: 1068634727411511596}
   m_Layer: 0
   m_Name: Door Root
   m_TagString: Untagged
@@ -1097,25 +1115,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!95 &1068634727411511596
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3913752817952019597}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 45a5e1391d6520e40b9a554ef79040ec, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7464712231713202245
 GameObject:
   m_ObjectHideFlags: 0

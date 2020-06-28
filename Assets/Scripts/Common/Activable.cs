@@ -13,4 +13,12 @@ public class Activable : MonoBehaviour
     public virtual void deactivate() {
         _active = false;
     }
+
+    public virtual void Start() {
+         if (_active) {
+            activate();
+        } else {
+            deactivate();
+        }
+    }
 }

@@ -22,19 +22,10 @@ public class BridgeController : Activable
         base.deactivate();
     }
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
         bridgeAnimator = bridge.GetComponent<Animator>();
-        if (initialDown) {
-            activate();
-        } else {
-            deactivate();
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _active = initialDown;
+        base.Start();
     }
 }
