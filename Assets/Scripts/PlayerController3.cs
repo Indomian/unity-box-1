@@ -6,8 +6,10 @@ public class PlayerController3 : MonoBehaviour
 {
     public float speed = 3.0F;
     public float rotateSpeed = 3.0F;
-
     public float pushPower = 2.0f;
+    public float mass = 10.0f;
+
+    public float forceYCorrection = 0.1f;
 
     CharacterController controller;
 
@@ -27,10 +29,19 @@ public class PlayerController3 : MonoBehaviour
         controller.SimpleMove(forward * curSpeed);
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            Debug.DrawRay(contact.point, contact.normal, Color.white, 2);
+        }
+    }
+
     // this script pushes all rigidbodies that the character touches
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        Debug.Log(hit.collider);
         Rigidbody body = hit.collider.attachedRigidbody;
 
         // no rigidbody
@@ -45,15 +56,29 @@ public class PlayerController3 : MonoBehaviour
             return;
         }
 
+        Vector3 yCorrection = new Vector3(0, forceYCorrection, 0);
+
+        Debug.DrawRay(hit.point, hit.moveDirection, Color.white, 2);
+        Debug.DrawRay(hit.point, hit.normal, Color.green, 2);
+
         // Calculate push direction from move direction,
         // we only push objects to the sides never up and down
         Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
 
+        Vector3 projectedPushDir = Vector3.Project(pushDir, -hit.normal);
+
+        Debug.DrawRay(hit.point + yCorrection, projectedPushDir, Color.blue, 2);
+        Debug.DrawRay(hit.point + yCorrection, pushDir, Color.red, 2);
+
         // If you know how fast your character is trying to move,
         // then you can also multiply the push velocity by that.
 
+
         // Apply the push
         //body.velocity = pushDir * pushPower;
-        body.AddForce(pushDir * pushPower, ForceMode.Force);
+        //body.AddForce(pushDir * mass * controller.velocity.magnitude, ForceMode.Impulse);
+        //body.AddForce(pushDir * pushPower, ForceMode.Force);
+        //body.AddForceAtPosition(pushDir * pushPower, hit.point + yCorrection, ForceMode.Force);
+        body.AddForceAtPosition(projectedPushDir * pushPower, hit.point + yCorrection, ForceMode.Force);
     }
 }
