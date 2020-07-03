@@ -11,11 +11,14 @@ public class PlayerController3 : MonoBehaviour
 
     public float forceYCorrection = 0.1f;
 
+    private Animator animator;
+
     CharacterController controller;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -25,7 +28,17 @@ public class PlayerController3 : MonoBehaviour
 
         // Move forward / backward
         Vector3 forward = transform.TransformDirection(Vector3.forward);
+
         float curSpeed = speed * Input.GetAxis("Vertical");
+
+        Vector3 move = forward * curSpeed;
+
+        if (move.magnitude > 0.1f) {
+            animator.SetBool("isMove", true);
+        } else {
+            animator.SetBool("isMove", false);
+        }
+
         controller.SimpleMove(forward * curSpeed);
     }
 
