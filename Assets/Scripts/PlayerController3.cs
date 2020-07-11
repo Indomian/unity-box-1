@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController3 : MonoBehaviour
+public class PlayerController3 : AbstractPlayerController
 {
     public float speed = 3.0F;
     public float rotateSpeed = 3.0F;
@@ -14,6 +14,7 @@ public class PlayerController3 : MonoBehaviour
     private Animator animator;
 
     CharacterController controller;
+    public PlayerPusher pusher;
 
     void Start()
     {
@@ -33,27 +34,28 @@ public class PlayerController3 : MonoBehaviour
 
         Vector3 move = forward * curSpeed;
 
+        // Vector3 speedCorrection = pusher.lastCollisionImpulse / mass;
+
+        // if (speedCorrection.magnitude > 0.1f && Vector3.Angle(move, speedCorrection) < 90.0f) {
+        //     return;
+        // }
+
+        // move -= speedCorrection;
+
         if (move.magnitude > 0.1f) {
             animator.SetBool("isMove", true);
         } else {
             animator.SetBool("isMove", false);
         }
 
-        controller.SimpleMove(forward * curSpeed);
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        foreach (ContactPoint contact in collision.contacts)
-        {
-            Debug.DrawRay(contact.point, contact.normal, Color.white, 2);
-        }
+        controller.SimpleMove(move);
     }
 
     // this script pushes all rigidbodies that the character touches
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        // return;
         Debug.Log(hit.collider);
         Rigidbody body = hit.collider.attachedRigidbody;
 
